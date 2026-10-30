@@ -47,7 +47,7 @@ async function analyze() {
   try {
     const { data: sessionData, error: sessionError } = await client.auth.getSession();
     if (sessionError || !sessionData.session) throw new Error('سجّل الدخول أولًا.');
-    const projectId = document.querySelector('[data-current-project-id]')?.dataset.currentProjectId;
+    const projectId = document.body.dataset.currentProjectId;
     if (!projectId) {
       throw new Error('احفظ المشروع والملف الأصلي أولًا، ثم افتح المشروع المحفوظ واضغط تحليل AI.');
     }
