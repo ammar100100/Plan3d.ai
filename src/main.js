@@ -5,7 +5,7 @@ import { createClient } from '@supabase/supabase-js';
 
 const $ = id => document.getElementById(id);
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const supabaseKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || import.meta.env.VITE_SUPABASE_ANON_KEY;
 const supabase = supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null;
 let user = null, isArabic = false, scene, camera, renderer, controls, modelGroup, grid;
 let currentFile = null, currentProjectId = null, projects = [], rooms = [
