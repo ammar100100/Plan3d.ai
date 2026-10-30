@@ -2,7 +2,7 @@ import { createClient } from '@supabase/supabase-js';
 
 const $ = (id) => document.getElementById(id);
 const url = import.meta.env.VITE_SUPABASE_URL;
-const key = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const key = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || import.meta.env.VITE_SUPABASE_ANON_KEY;
 const client = url && key ? createClient(url, key) : null;
 
 function status(message, bad = false) {
@@ -38,7 +38,7 @@ function showResult(result) {
 
 async function analyze() {
   if (!client) {
-    status('Supabase is not connected to this deployment yet. Configure VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY.', true);
+    status('Supabase is not connected to this deployment yet. Configure VITE_SUPABASE_URL and VITE_SUPABASE_PUBLISHABLE_KEY (or VITE_SUPABASE_ANON_KEY).', true);
     return;
   }
   const button = $('analyzePlan');
